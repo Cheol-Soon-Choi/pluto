@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layout}"
+>
+<head>
+    <!--    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. -->
+    <!--    필요힌 css, script 추가영역 -->
+    <script>
+        $(function () {
+            getProductList();
+        });
+    </script>
+</head>
+
+<div layout:fragment="content" class="warp">
+    <div class="best_items" style="border: 1px solid red">
+        Best Product Top 5
+    </div>
+    <div class="items" style="border: 1px solid red">
+        New Arrival
+    </div>
+    <div style="border: 1px solid red">
+        테스트 영역
+        <table style="border: black 1px solid">
+            <tr>
+                <td>아이디</td>
+                <td>이름</td>
+                <td>비밀번호</td>
+            </tr>
+            <tr th:each="users : ${users}">
+                <td th:text="${users.id}">id</td>
+                <td th:text="${users.username}">name</td>
+                <td th:text="${users.password}">password</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+
+    </div>
+</div>
+</html>

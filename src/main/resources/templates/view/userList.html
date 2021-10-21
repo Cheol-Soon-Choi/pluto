@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="~{layouts/layout}">
+
+<div class="container" layout:fragment="content" style="border: 1px solid red">
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>
+                <input name="name" id="name">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td>
+                <input name="pass" type="password" id="pass">
+            </td>
+        </tr>
+    </table>
+</div>
+</html>

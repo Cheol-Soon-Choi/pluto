@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layouts/layout}">
+
+    <div layout:fragment="content">
+        <div style="border: 1px solid red">
+            testView.html 입니다. 즉 컨텐츠 영역
+        </div>
+        <div>
+            <h2 th:text="${testmsg}"></h2>
+        </div>
+    </div>
+</html>

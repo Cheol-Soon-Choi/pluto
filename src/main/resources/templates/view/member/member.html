@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="~{layouts/layout}">
+
+<div layout:fragment="content" class="warp">
+    회원가입
+    <table>
+        <tr>
+            <td>아이디</td>
+            <td>
+                <input name="id" id="user_id" class="user_id1" oninput="checkid()" placeholder="이메일을 입력해주세요">
+            </td>
+            <td>
+                <span class="positive_id">사용가능한 아이디 입니다.</span>
+                <span class="negative_id">존재하는 아이디 입니다!</span>
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td>
+                <input name="pass" type="password" id="pass">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호 확인</td>
+            <td>
+                <input name="pass2" type="password" id="pass2">
+            </td>
+        </tr>
+    </table>
+    <div>
+        <input id="joinUser" type="button" value="회원가입" onclick="joinUser()">
+        <input type="reset" value="재작성">
+    </div>
+</div>
+</html>
