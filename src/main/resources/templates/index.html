@@ -5,13 +5,7 @@
         layout:decorate="~{layouts/layout}"
 >
 <head>
-    <!--    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. -->
-    <!--    필요힌 css, script 추가영역 -->
-    <script>
-        $(function () {
-            getProductList();
-        });
-    </script>
+    <script src="js/index.js"></script>
 </head>
 
 <div layout:fragment="content" class="warp">
