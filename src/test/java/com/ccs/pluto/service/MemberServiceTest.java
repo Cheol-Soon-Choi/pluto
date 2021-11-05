@@ -69,4 +69,38 @@ class MemberServiceTest {
         assertThat(member.getAddress()).isEqualTo(address);
         assertThat(member.getRole()).isEqualTo(Role.ADMIN);
     }
+
+    @Test
+    @DisplayName("중복회원가입 테스트")
+    public void duplicateSaveMember() {
+        //given
+        String name = "김종국";
+        String email = "gym@love.com";
+        String address = "health";
+        String password = "1234";
+
+        MemberFormDto memberFormDto1 = MemberFormDto.builder()
+                .name(name)
+                .email(email)
+                .address(address)
+                .password(password)
+                .build();
+        MemberFormDto memberFormDto2 = MemberFormDto.builder()
+                .name(name)
+                .email(email)
+                .address(address)
+                .password(password)
+                .build();
+
+        //when
+        try {
+            memberService.saveMember(memberFormDto1, passwordEncoder);
+            memberService.saveMember(memberFormDto2, passwordEncoder);
+        }
+
+        //then
+        catch (IllegalStateException e) {
+            assertThat(e.getMessage()).isEqualTo("이미 가입된 회원입니다.");
+        }
+    }
 }
