@@ -6,8 +6,8 @@
 <head>
     <link href="css/member.css" rel="stylesheet" type="text/css">
     <script src="js/member.js"></script>
-<!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
-<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
 </head>
 
 <div layout:fragment="content">
@@ -15,22 +15,22 @@
         <div class="form-group">
             <label th:for="name">이름</label>
             <input type="text" th:field="*{name}" class="form-control" placeholder="이름을 입력해주세요">
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
+            <p class="fieldError" id="nameError"></p>
         </div>
         <div class="form-group">
             <label th:for="email">이메일주소</label>
             <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요">
-            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect data</p>
+            <p class="fieldError" id="emailError"></p>
         </div>
         <div class="form-group">
             <label th:for="password">비밀번호</label>
             <input type="password" th:field="*{password}" class="form-control" placeholder="비밀번호 입력">
-            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
+            <p class="fieldError" id="passwordError"></p>
         </div>
         <div class="form-group">
             <label th:for="address">주소</label>
             <input type="text" th:field="*{address}" class="form-control" placeholder="주소를 입력해주세요">
-            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect data</p>
+            <p class="fieldError" id="addressError"></p>
         </div>
         <div style="text-align: center">
             <button type="button" class="btn btn-primary" onclick="memberFormSubmit()">Submit</button>
