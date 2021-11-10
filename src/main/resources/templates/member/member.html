@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
-
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layout}">
 <head>
-    <link href="css/member.css" rel="stylesheet" type="text/css">
-    <script src="js/member.js"></script>
     <!--    <meta name="_csrf" th:content="${_csrf.token}"/>-->
     <!--    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
 </head>
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/member.css}" rel="stylesheet" type="text/css">
+</th:block>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/member.js}"></script>
+</th:block>
 
 <div layout:fragment="content">
     <form action="/members" role="form" method="post" th:object="${memberFormDto}">

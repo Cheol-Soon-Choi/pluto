@@ -1,3 +1,3 @@
-$(function () {
-    getProductList();
-});
+// $(function () {
+//     getProductList();
+// });

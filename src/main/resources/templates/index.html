@@ -4,9 +4,10 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layouts/layout}"
 >
-<head>
-    <script src="js/index.js"></script>
-</head>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/index.js}"></script>
+</th:block>
 
 <div layout:fragment="content" class="warp">
     <div class="best_items" style="border: 1px solid red">

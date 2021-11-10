@@ -22,4 +22,17 @@ public class MainController {
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/member";
     }
+
+    //로그인 페이지
+    @GetMapping("/login")
+    public String loginMember() {
+        return "member/memberLogin";
+    }
+
+    //로그인 페이지
+    @GetMapping("/login/error")
+    public String loginError(Model model) {
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
+        return "member/memberLogin";
+    }
 }
