@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <nav th:fragment="navFragment">
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -7,15 +9,15 @@
         </label>
         <label class="logo">Pluto</label>
         <ul>
-            <li><a href="admin1">상품등록</a></li>
-            <li><a href="admin2">상품관리</a></li>
-            <li><a href="/">메인</a></li>
-            <li><a href="items">제품</a></li>
-            <li><a href="#">장바구니</a></li>
-            <li><a href="#">주문내역</a></li>
-            <li><a href="login">로그인</a></li>
-            <li><a href="logout">로그아웃</a></li>
-            <li><a href="members">회원가입</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/items">상품등록</a></li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="admin2">상품관리</a></li>
+            <li sec:authorize="permitAll()"><a href="/">메인</a></li>
+            <li sec:authorize="permitAll()"><a href="/items">제품</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="#">장바구니</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="#">주문내역</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/login">로그인</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout">로그아웃</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/members">회원가입</a></li>
         </ul>
     </nav>
 </html>

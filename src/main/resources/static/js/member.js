@@ -20,7 +20,7 @@ function memberFormSubmit() {
         }
     }).done(function (response) {
         alert("회원가입에 성공하였습니다.");
-        window.location.href = "/"
+        window.location.href = "/login"
     }).fail(function (error) {
         //모든 reason 삭제
         let fieldErrorList = document.getElementsByClassName("fieldError")

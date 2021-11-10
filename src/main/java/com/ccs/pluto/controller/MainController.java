@@ -35,4 +35,10 @@ public class MainController {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
         return "member/memberLogin";
     }
+    
+    //관리자 제품 등록 페이지
+    @GetMapping("/admin/items")
+    public String itemForm() {
+        return "item/itemForm";
+    }
 }

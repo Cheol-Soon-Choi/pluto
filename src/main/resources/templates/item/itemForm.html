@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layouts/layout}">
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/item.css}" rel="stylesheet" type="text/css">
+</th:block>
+<th:block layout:fragment="script">
+    <script th:src="@{/js/item.js}"></script>
+</th:block>
+
+<div layout:fragment="content">
+    상품등록
+</div>
+</html>
