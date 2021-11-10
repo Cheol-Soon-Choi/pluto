@@ -1,7 +1,7 @@
 package com.ccs.pluto.config;
 
 import com.ccs.pluto.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,13 +15,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    MemberService memberService;
+    private final MemberService memberService;
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/h2-console/**");
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
     }
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/")
-                .usernameParameter("email")
+                .usernameParameter("email") // form input name = 'email' (default=username)
                 .failureUrl("/login/error")
                 .and()
                 .logout()
