@@ -1,13 +1,3 @@
-$(document).ready(function () {
-    var errorMessage = [[${errorMessage}]];
-    if (errorMessage != null) {
-        alert(errorMessage);
-    }
-
-    bindDomEvent();
-
-});
-
 function bindDomEvent() {
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();  //이미지 파일명
