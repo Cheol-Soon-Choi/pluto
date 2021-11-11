@@ -1,10 +1,7 @@
 package com.ccs.pluto.models.entity;
 
 import com.ccs.pluto.models.constant.ItemSellStatus;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,8 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Entity
+@Setter
+@Table(name = "item")
 public class Item extends BaseEntity{
 
     @Id
@@ -24,7 +23,7 @@ public class Item extends BaseEntity{
     private String itemName;
 
     //가격
-    @Column(nullable = false)
+    @Column(name = "price", nullable = false)
     private int price;
 
     //재고

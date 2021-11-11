@@ -5,6 +5,7 @@ import com.ccs.pluto.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +21,7 @@ public class ItemApiController {
 
     @PostMapping("/admin/items")
     public ModelAndView newItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
-                                List<MultipartFile> itemImgFileList) {
+                                @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/index");
 
