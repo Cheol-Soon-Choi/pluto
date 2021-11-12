@@ -2,11 +2,14 @@ package com.ccs.pluto.service;
 
 import com.ccs.pluto.models.dto.ItemFormDto;
 import com.ccs.pluto.models.dto.ItemImgDto;
+import com.ccs.pluto.models.dto.ItemSearchDto;
 import com.ccs.pluto.models.entity.Item;
 import com.ccs.pluto.models.entity.ItemImg;
 import com.ccs.pluto.models.entity.ItemImgRepository;
 import com.ccs.pluto.models.entity.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -78,5 +81,11 @@ public class ItemService {
         }
 
         return item.getId();
+    }
+
+    //상품 검색
+    @Transactional(readOnly = true)
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 }

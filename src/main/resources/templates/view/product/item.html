@@ -1,60 +1,60 @@
-<!DOCTYPE html>
-<html
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="~{layouts/layout}"
->
+<!--<!DOCTYPE html>-->
+<!--<html-->
+<!--        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--        layout:decorate="~{layouts/layout}"-->
+<!--&gt;-->
 
-<head>
-    <!--    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. -->
-    <!--    필요힌 css, script 추가영역 -->
-    <script>
-        $(function () {
-            getProductList();
-        });
-    </script>
-</head>
+<!--<head>-->
+<!--    &lt;!&ndash;    thymeleaf layout dialect가 contents페이지의 head태그를 layout의 head태그에 자동으로 추가해준다. &ndash;&gt;-->
+<!--    &lt;!&ndash;    필요힌 css, script 추가영역 &ndash;&gt;-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            getProductList();-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
 
-<div layout:fragment="content" class="warp">
-    <div class="categorybox">
-        <table style="width: 100%">
-            <tr>
-                <td class="category1">카테고리</td>
-                <td class="type1"><input type="radio" name="type1" value="all" checked>전체</input> </td>
-                <td class="type1"><input type="radio" name="type1" value="clothes">의류</input> </td>
-                <td class="type1"><input type="radio" name="type1" value="computer">컴퓨터</input></td>
-                <td class="type1"><input type="radio" name="type1" value="shoes">신발</input> </td>
-                <td class="type1"><input type="radio" name="type1" value="food">식품</input> </td>
-                <td class="type1"><input type="radio" name="type1" value="device">기기</input> </td>
-            </tr>
-            <tr>
-                <td class="category2">정렬기준</td>
-                <td class="type2"><input type="radio" name="type2" value="lately" checked>최신</input> </td>
-                <td class="type2"><input type="radio" name="type2" value="past">과거</input> </td>
-                <td class="type2"><input type="radio" name="type2" value="highprice">가격&#8593;</input></td>
-                <td class="type2"><input type="radio" name="type2" value="lowprice">가격&#8595;</input> </td>
-                <td class="type2"><input type="radio" name="type2" value="good">별점&#8593;</input> </td>
-                <td class="type2"><input type="radio" name="type2" value="bad">별점&#8595;</input> </td>
-            </tr>
-        </table>
-        <div style="text-align: center; padding-bottom: 20px">
-            <br>
-            <input class="btn" type="button" onclick="inquireProduct()" value="조회"/>
-        </div>
-    </div>
-    <div class="itembox">
-        <div>
-            정렬: 전체-최신
-        </div>
-        <div class="itemlist">
-            <div class="card" style="width: 26rem;">
-                <a href=""><img src="image/among1.PNG" class="card-img-top" alt=""></a>
-                <div class="card-body">
-                    <h5 class="card-title">어몽어스 오렌지맛 치즈케익</h5>
-                    <p class="card-text" style="margin-bottom: 0px">별1~5</p>
-                    <p class="card-text">10000원</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</html>
+<!--<div layout:fragment="content" class="warp">-->
+<!--    <div class="categorybox">-->
+<!--        <table style="width: 100%">-->
+<!--            <tr>-->
+<!--                <td class="category1">카테고리</td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="all" checked>전체</input> </td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="clothes">의류</input> </td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="computer">컴퓨터</input></td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="shoes">신발</input> </td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="food">식품</input> </td>-->
+<!--                <td class="type1"><input type="radio" name="type1" value="device">기기</input> </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td class="category2">정렬기준</td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="lately" checked>최신</input> </td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="past">과거</input> </td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="highprice">가격&#8593;</input></td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="lowprice">가격&#8595;</input> </td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="good">별점&#8593;</input> </td>-->
+<!--                <td class="type2"><input type="radio" name="type2" value="bad">별점&#8595;</input> </td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--        <div style="text-align: center; padding-bottom: 20px">-->
+<!--            <br>-->
+<!--            <input class="btn" type="button" onclick="inquireProduct()" value="조회"/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="itembox">-->
+<!--        <div>-->
+<!--            정렬: 전체-최신-->
+<!--        </div>-->
+<!--        <div class="itemlist">-->
+<!--            <div class="card" style="width: 26rem;">-->
+<!--                <a href=""><img src="image/among1.PNG" class="card-img-top" alt=""></a>-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">어몽어스 오렌지맛 치즈케익</h5>-->
+<!--                    <p class="card-text" style="margin-bottom: 0px">별1~5</p>-->
+<!--                    <p class="card-text">10000원</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</html>-->
