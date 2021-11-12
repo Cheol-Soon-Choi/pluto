@@ -4,12 +4,11 @@ import com.ccs.pluto.models.dto.ItemFormDto;
 import com.ccs.pluto.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class ItemApiController {
 
     private final ItemService itemService;
 
+    //상품 등록
     @PostMapping("/admin/items")
     public ModelAndView newItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                                 @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
@@ -43,6 +43,23 @@ public class ItemApiController {
             mav.addObject("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
             return mav;
         }
+        return mav;
+    }
+
+    //상품 수정(정보가져오기)
+    @GetMapping("/admin/items/{itemId}")
+    public ModelAndView edtiItem(@PathVariable("itemId") Long itemId) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/item/itemForm");
+
+        try {
+            ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+            mav.addObject("itemFormDto", itemFormDto);
+        } catch (EntityNotFoundException e) {
+            mav.addObject("errorMessage", "존재하지 않는 상품입니다.");
+            mav.addObject("itemFormDto", new ItemFormDto());
+        }
+
         return mav;
     }
 }
