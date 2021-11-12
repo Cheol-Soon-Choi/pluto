@@ -1,6 +1,7 @@
 package com.ccs.pluto.models.entity;
 
 import com.ccs.pluto.models.constant.ItemSellStatus;
+import com.ccs.pluto.models.dto.ItemFormDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Table(name = "item")
-public class Item extends BaseEntity{
+public class Item extends BaseEntity {
 
     @Id
     @Column(name = "item_id")
@@ -46,6 +47,14 @@ public class Item extends BaseEntity{
         this.stockNumber = stockNumber;
         this.itemDetail = itemDetail;
         this.itemSellStatus = itemSellStatus;
+    }
+
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.itemName = itemFormDto.getItemName();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
     }
 
 }

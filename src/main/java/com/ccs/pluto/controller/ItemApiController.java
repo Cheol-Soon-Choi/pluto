@@ -48,7 +48,7 @@ public class ItemApiController {
 
     //상품 수정(정보가져오기)
     @GetMapping("/admin/items/{itemId}")
-    public ModelAndView edtiItem(@PathVariable("itemId") Long itemId) {
+    public ModelAndView getItemDtl(@PathVariable("itemId") Long itemId) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/item/itemForm");
 
@@ -58,6 +58,35 @@ public class ItemApiController {
         } catch (EntityNotFoundException e) {
             mav.addObject("errorMessage", "존재하지 않는 상품입니다.");
             mav.addObject("itemFormDto", new ItemFormDto());
+        }
+
+        return mav;
+    }
+
+    //상품 수정
+    @PostMapping("/admin/items/{itemId}")
+    public ModelAndView editItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
+                                 @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/index");
+
+        if (bindingResult.hasErrors()) {
+            mav.setViewName("/item/itemForm");
+            return mav;
+        }
+
+        if (itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null) {
+            mav.setViewName("/item/itemForm");
+            mav.addObject("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
+            return mav;
+        }
+
+        try {
+            itemService.updateItem(itemFormDto, itemImgFileList);
+        } catch (Exception e) {
+            mav.setViewName("/item/itemForm");
+            mav.addObject("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
+            return mav;
         }
 
         return mav;
