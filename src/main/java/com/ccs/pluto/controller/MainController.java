@@ -52,7 +52,8 @@ public class MainController {
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/itemForm";
     }
-
+    
+    //관리자 제품 관리 페이지
     @GetMapping(value = {"/admin/itemMng", "/admin/itemMng/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
 
