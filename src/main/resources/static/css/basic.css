@@ -1,180 +1,180 @@
-nav {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    background-color: blue;
-    height: 80px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
+/*nav {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    text-decoration: none;*/
+/*    list-style: none;*/
+/*    box-sizing: border-box;*/
+/*    background-color: blue;*/
+/*    height: 80px;*/
+/*    width: 100%;*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    z-index: 1;*/
+/*}*/
 
-label.logo {
-    color: white;
-    font-size: 35px;
-    line-height: 80px;
-    padding: 0 100px;
-    font-weight: bold;
-}
+/*label.logo {*/
+/*    color: white;*/
+/*    font-size: 35px;*/
+/*    line-height: 80px;*/
+/*    padding: 0 100px;*/
+/*    font-weight: bold;*/
+/*}*/
 
-nav ul {
-    float: right;
-    margin-right: 20px;
-}
+/*nav ul {*/
+/*    float: right;*/
+/*    margin-right: 20px;*/
+/*}*/
 
-nav ul li {
-    display: inline-block;
-    line-height: 80px;
-    margin: 0 5px;
-}
+/*nav ul li {*/
+/*    display: inline-block;*/
+/*    line-height: 80px;*/
+/*    margin: 0 5px;*/
+/*}*/
 
-nav ul li a {
-    color: white;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-transform: uppercase;
-}
+/*nav ul li a {*/
+/*    color: white;*/
+/*    font-size: 17px;*/
+/*    padding: 7px 13px;*/
+/*    border-radius: 3px;*/
+/*    text-transform: uppercase;*/
+/*}*/
 
-a:hover {
-    color: red;
-    font-weight: bold;
-    transition: .3s;
-}
+/*a:hover {*/
+/*    color: red;*/
+/*    font-weight: bold;*/
+/*    transition: .3s;*/
+/*}*/
 
-.checkbtn {
-    font-size: 30px;
-    color: white;
-    float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-}
+/*.checkbtn {*/
+/*    font-size: 30px;*/
+/*    color: white;*/
+/*    float: right;*/
+/*    line-height: 80px;*/
+/*    margin-right: 40px;*/
+/*    cursor: pointer;*/
+/*    display: none;*/
+/*}*/
 
-#check {
-    display: none;
-}
+/*#check {*/
+/*    display: none;*/
+/*}*/
 
-@media (max-width: 910px) {
-    label.logo {
-        font-size: 30px;
-        padding-left: 50px;
-    }
+/*@media (max-width: 910px) {*/
+/*    label.logo {*/
+/*        font-size: 30px;*/
+/*        padding-left: 50px;*/
+/*    }*/
 
-    nav ul li a {
-        font-size: 16px;
-    }
+/*    nav ul li a {*/
+/*        font-size: 16px;*/
+/*    }*/
 
-    .checkbtn {
-        display: block;
-    }
+/*    .checkbtn {*/
+/*        display: block;*/
+/*    }*/
 
-    ul {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background-color: midnightblue;
-        top: 80px;
-        left: -100%;
-        text-align: center;
-        transition: all .3s;
-    }
+/*    ul {*/
+/*        position: fixed;*/
+/*        width: 100%;*/
+/*        height: 100vh;*/
+/*        background-color: midnightblue;*/
+/*        top: 80px;*/
+/*        left: -100%;*/
+/*        text-align: center;*/
+/*        transition: all .3s;*/
+/*    }*/
 
-    nav ul li {
-        display: block;
-        margin: 30px 0;
-        line-height: 30px;
-    }
+/*    nav ul li {*/
+/*        display: block;*/
+/*        margin: 30px 0;*/
+/*        line-height: 30px;*/
+/*    }*/
 
-    nav ul li a {
-        font-size: 20px;
-    }
+/*    nav ul li a {*/
+/*        font-size: 20px;*/
+/*    }*/
 
-    a:hover {
-        background: none;
-        color: red;
-    }
+/*    a:hover {*/
+/*        background: none;*/
+/*        color: red;*/
+/*    }*/
 
-    #check:checked ~ ul {
-        left: 0;
-    }
-}
+/*    #check:checked ~ ul {*/
+/*        left: 0;*/
+/*    }*/
+/*}*/
 
-footer {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    height: 40px;
-    width: 100%;
-}
+/*footer {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    height: 40px;*/
+/*    width: 100%;*/
+/*}*/
 
-.warp {
-    margin: 30px 0;
-    border: yellowgreen 1px solid;
-    width: 100%;
-}
+/*.warp {*/
+/*    margin: 30px 0;*/
+/*    border: yellowgreen 1px solid;*/
+/*    width: 100%;*/
+/*}*/
 
-.categorybox {
-    text-align: center;
-}
+/*.categorybox {*/
+/*    text-align: center;*/
+/*}*/
 
-table {
-    table-layout: fixed;
-    word-break: break-all;
-    font-size: 20px;
-}
+/*table {*/
+/*    table-layout: fixed;*/
+/*    word-break: break-all;*/
+/*    font-size: 20px;*/
+/*}*/
 
-tr, td {
-    /*border: black 1px solid;*/
-    padding: 5px;
-}
+/*tr, td {*/
+/*    !*border: black 1px solid;*!*/
+/*    padding: 5px;*/
+/*}*/
 
-.type {
-    text-align: center;
-    width: 15%;
-    font-size: 15px;
-}
+/*.type {*/
+/*    text-align: center;*/
+/*    width: 15%;*/
+/*    font-size: 15px;*/
+/*}*/
 
-.category1, .category2 {
-    width: 25%;
-    color: white;
-    background: blue;
-}
+/*.category1, .category2 {*/
+/*    width: 25%;*/
+/*    color: white;*/
+/*    background: blue;*/
+/*}*/
 
-.btn {
-    color: white;
-    background: blue;
-}
+/*.btn {*/
+/*    color: white;*/
+/*    background: blue;*/
+/*}*/
 
-.card {
-    float: left;
-    margin: 10px 10px;
-}
+/*.card {*/
+/*    float: left;*/
+/*    margin: 10px 10px;*/
+/*}*/
 
-img {
-    overflow: hidden;
-    max-width: 100%;
-    height: 350px;
-    object-fit: fill;
-}
+/*img {*/
+/*    overflow: hidden;*/
+/*    max-width: 100%;*/
+/*    height: 350px;*/
+/*    object-fit: fill;*/
+/*}*/
 
-.positive_id {
-    color: green;
-    display: none;
-}
+/*.positive_id {*/
+/*    color: green;*/
+/*    display: none;*/
+/*}*/
 
-.negative_id {
-    color: red;
-    display: none;
-}
+/*.negative_id {*/
+/*    color: red;*/
+/*    display: none;*/
+/*}*/
 
-.negative_pw {
-    color: red;
-    display: none;
-}
+/*.negative_pw {*/
+/*    color: red;*/
+/*    display: none;*/
+/*}*/
 
