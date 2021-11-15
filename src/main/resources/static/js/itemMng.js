@@ -11,7 +11,7 @@ function page(page){
     var searchBy = $("#searchBy").val();
     var searchQuery = $("#searchQuery").val();
 
-    location.href="/admin/items/" + page + "?searchDateType=" + searchDateType
+    location.href="/admin/itemMng/" + page + "?searchDateType=" + searchDateType
         + "&searchSellStatus=" + searchSellStatus
         + "&searchBy=" + searchBy
         + "&searchQuery=" + searchQuery;
