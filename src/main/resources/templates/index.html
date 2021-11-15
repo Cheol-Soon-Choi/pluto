@@ -8,31 +8,57 @@
 <th:block layout:fragment="script">
     <script th:src="@{/js/index.js}"></script>
 </th:block>
+<th:block layout:fragment="css">
+    <link th:href="@{/css/basic.css}" rel="stylesheet" type="text/css">
+</th:block>
 
 <div layout:fragment="content" class="warp">
     <div class="best_items" style="border: 1px solid red">
         Best Product Top 5
     </div>
+
     <div class="items" style="border: 1px solid red">
         New Arrival
     </div>
-    <div style="border: 1px solid red">
-        테스트 영역
-        <table style="border: black 1px solid">
-            <tr>
-                <td>아이디</td>
-                <td>이름</td>
-                <td>비밀번호</td>
-            </tr>
-            <tr th:each="users : ${users}">
-                <td th:text="${users.id}">id</td>
-                <td th:text="${users.username}">name</td>
-                <td th:text="${users.password}">password</td>
-            </tr>
-        </table>
-    </div>
-    <div>
 
+    <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
+    <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+        <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
+    </div>
+
+    <div class="row">
+        <th:block th:each="item, status: ${items.getContent()}">
+            <div class="col-md-4 margin">
+                <div class="card">
+                    <a th:href="'/items/' +${item.id}" class="text-dark">
+                        <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemName}" height="400">
+                        <div class="card-body">
+                            <h4 class="card-title">[[${item.itemName}]]</h4>
+                            <p class="card-text">[[${item.itemDetail}]]</p>
+                            <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </th:block>
+    </div>
+
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" >
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+                <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+                    <span aria-hidden='true'>Previous</span>
+                </a>
+            </li>
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page-1}?'active':''">
+                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
+            </li>
+            <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                    <span aria-hidden='true'>Next</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 </html>

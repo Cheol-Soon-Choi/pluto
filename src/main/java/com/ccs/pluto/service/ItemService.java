@@ -3,6 +3,7 @@ package com.ccs.pluto.service;
 import com.ccs.pluto.models.dto.ItemFormDto;
 import com.ccs.pluto.models.dto.ItemImgDto;
 import com.ccs.pluto.models.dto.ItemSearchDto;
+import com.ccs.pluto.models.dto.MainItemDto;
 import com.ccs.pluto.models.entity.Item;
 import com.ccs.pluto.models.entity.ItemImg;
 import com.ccs.pluto.models.entity.ItemImgRepository;
@@ -83,9 +84,15 @@ public class ItemService {
         return item.getId();
     }
 
-    //상품 검색
+    //관리자 상품 검색
     @Transactional(readOnly = true)
-    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
+    //메인 상품 검색
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 }

@@ -23,7 +23,7 @@ public class ItemApiController {
     public ModelAndView newItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                                 @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/index");
+        mav.setViewName("redirect:/");
 
         if (bindingResult.hasErrors()) {
             mav.setViewName("/item/itemForm");
@@ -68,7 +68,7 @@ public class ItemApiController {
     public ModelAndView editItem(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
                                  @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/index");
+        mav.setViewName("redirect:/");
 
         if (bindingResult.hasErrors()) {
             mav.setViewName("/item/itemForm");

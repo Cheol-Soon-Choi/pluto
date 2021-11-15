@@ -2,6 +2,7 @@ package com.ccs.pluto.controller;
 
 import com.ccs.pluto.models.dto.ItemFormDto;
 import com.ccs.pluto.models.dto.ItemSearchDto;
+import com.ccs.pluto.models.dto.MainItemDto;
 import com.ccs.pluto.models.entity.Item;
 import com.ccs.pluto.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,15 @@ public class MainController {
 
     //메인 페이지
     @GetMapping("/")
-    public String home() {
+    public String home(ItemSearchDto itemSearchDto, Optional<Integer> page, Model model) {
+
+        Pageable pageable = PageRequest.of(page.orElse(0), 6);
+        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
+
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        model.addAttribute("maxPage", 5);
+
         return "index";
     }
 
@@ -52,7 +61,7 @@ public class MainController {
         model.addAttribute("itemFormDto", new ItemFormDto());
         return "item/itemForm";
     }
-    
+
     //관리자 제품 관리 페이지
     @GetMapping(value = {"/admin/itemMng", "/admin/itemMng/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
