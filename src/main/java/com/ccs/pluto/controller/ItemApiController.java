@@ -91,4 +91,18 @@ public class ItemApiController {
 
         return mav;
     }
+
+    //상품 상세정보
+    @GetMapping("/items/{itemId}")
+    public ModelAndView itemDtl(@PathVariable("itemId") Long itemId) {
+
+        ModelAndView mav = new ModelAndView();
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+
+        mav.addObject("item", itemFormDto);
+        mav.setViewName("/item/itemDtl");
+
+        return mav;
+    }
+
 }
