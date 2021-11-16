@@ -41,7 +41,7 @@ public class Order extends BaseEntity {
         Order order = new Order();
         order.setMember(member);
 
-        for(OrderItem orderItem : orderItemList) {
+        for (OrderItem orderItem : orderItemList) {
             order.addOrderItem(orderItem);
         }
 
@@ -53,10 +53,17 @@ public class Order extends BaseEntity {
     //테스트용
     public int getTotalPrice() {
         int totalPrice = 0;
-        for(OrderItem orderItem : orderItems){
+        for (OrderItem orderItem : orderItems) {
             totalPrice += orderItem.getTotalPrice();
         }
         return totalPrice;
     }
 
+    public void cancelOrder() {
+        this.orderStatus = OrderStatus.CANCEL;
+
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
 }
