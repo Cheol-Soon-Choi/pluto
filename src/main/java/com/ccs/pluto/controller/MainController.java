@@ -3,8 +3,10 @@ package com.ccs.pluto.controller;
 import com.ccs.pluto.models.dto.ItemFormDto;
 import com.ccs.pluto.models.dto.ItemSearchDto;
 import com.ccs.pluto.models.dto.MainItemDto;
+import com.ccs.pluto.models.dto.OrderHistDto;
 import com.ccs.pluto.models.entity.Item;
 import com.ccs.pluto.service.ItemService;
+import com.ccs.pluto.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -21,6 +24,7 @@ import java.util.Optional;
 public class MainController {
 
     private final ItemService itemService;
+    private final OrderService orderService;
 
     //메인 페이지
     @GetMapping("/")
@@ -74,5 +78,22 @@ public class MainController {
         model.addAttribute("maxPage", 5);
 
         return "item/itemMng";
+    }
+
+    //주문 내역 페이지
+    @GetMapping(value = {"/orders", "/orders/{page}"})
+    public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model) {
+
+        System.out.println(principal);
+        System.out.println(principal.getName());
+
+        Pageable pageable = PageRequest.of(page.orElse(0), 3);
+        Page<OrderHistDto> ordersHistDtoList = orderService.getOrderList(principal.getName(), pageable);
+
+        model.addAttribute("orders", ordersHistDtoList);
+        model.addAttribute("page", pageable.getPageNumber());
+        model.addAttribute("maxPage", 5);
+
+        return "order/orderHist";
     }
 }

@@ -21,6 +21,7 @@ public class OrderApiController {
 
     private final OrderService orderService;
 
+    //주문 실시
     @PostMapping("/order")
     public ResponseEntity order(@RequestBody @Valid OrderDto orderDto
             , BindingResult bindingResult, Principal principal) {
@@ -38,7 +39,8 @@ public class OrderApiController {
 
         String email = principal.getName();
         Long orderId = orderService.order(orderDto, email);
-
+        System.out.println(email);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
+
 }
