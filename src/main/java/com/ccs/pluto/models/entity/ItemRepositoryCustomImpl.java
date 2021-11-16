@@ -83,7 +83,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
     //메인 검색
     //where절에서 사용
-    private BooleanExpression itemNmLike(String searchQuery){
+    private BooleanExpression itemNmLike(String searchQuery) {
         return StringUtils.isEmpty(searchQuery) ? null : QItem.item.itemName.like("%" + searchQuery + "%");
     }
 
@@ -99,7 +99,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
                                 item.itemName,
                                 item.itemDetail,
                                 itemImg.imgUrl,
-                                item.price)
+                                item.price,
+                                item.itemSellStatus)
                 )
                 .from(itemImg)
                 .join(itemImg.item, item)
