@@ -16,6 +16,15 @@ public class ErrorResponse {
     private List<FieldError> errors;
     private String code;
 
+    private ErrorResponse(final ErrorCode code){
+        this.message = code.getMessage();
+        this.code = code.getCode();
+    }
+
+    public static ErrorResponse of(final ErrorCode code) {
+        return new ErrorResponse(code);
+    }
+
     private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
         this.message = code.getMessage();
         this.errors = errors;

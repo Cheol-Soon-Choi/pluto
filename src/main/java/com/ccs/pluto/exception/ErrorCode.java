@@ -4,7 +4,9 @@ import lombok.Getter;
 
 public enum ErrorCode {
     //에러코드 추가
-    INVALID_INPUT_VALUE("ERROR_CODE_0001", "Input value error");
+    INVALID_INPUT_VALUE("ERROR_CODE_0001", "Input value error"),
+
+    EMPTY_STOCK("ERROR_CODE_0002", "재고 부족");
 
     @Getter
     private String code;

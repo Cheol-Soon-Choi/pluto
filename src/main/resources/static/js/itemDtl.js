@@ -46,7 +46,7 @@ function order() {
                 alert('로그인 후 이용해주세요');
                 location.href = '/login';
             } else {
-                alert(jqXHR.responseText);
+                alert(jqXHR.responseJSON.message + ", 잔여수량: " + $("#stockNumber").val() + "개");
             }
         }
     });

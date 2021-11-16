@@ -1,5 +1,6 @@
 package com.ccs.pluto.models.entity;
 
+import com.ccs.pluto.exception.OutOfStockException;
 import com.ccs.pluto.models.constant.ItemSellStatus;
 import com.ccs.pluto.models.dto.ItemFormDto;
 import lombok.*;
@@ -49,12 +50,22 @@ public class Item extends BaseEntity {
         this.itemSellStatus = itemSellStatus;
     }
 
+    //상품 수정
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemName = itemFormDto.getItemName();
         this.price = itemFormDto.getPrice();
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
+
+    //주문시 재고 감소
+    public void removeStock(int stockNumber) {
+        int restStock = this.stockNumber - stockNumber;
+        if (restStock < 0) {
+            throw new OutOfStockException();
+        }
+        this.stockNumber = restStock;
     }
 
 }
