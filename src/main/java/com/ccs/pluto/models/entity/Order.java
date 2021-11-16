@@ -50,6 +50,7 @@ public class Order extends BaseEntity {
         return order;
     }
 
+    //테스트용
     public int getTotalPrice() {
         int totalPrice = 0;
         for(OrderItem orderItem : orderItems){

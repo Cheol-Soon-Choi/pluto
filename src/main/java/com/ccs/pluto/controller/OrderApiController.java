@@ -33,13 +33,12 @@ public class OrderApiController {
                 sb.append(fieldError.getDefaultMessage());
             }
 
-            return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(sb.toString(), HttpStatus.BAD_REQUEST);
         }
 
-        Long orderId;
         String email = principal.getName();
-        orderId = orderService.order(orderDto, email);
+        Long orderId = orderService.order(orderDto, email);
 
-        return new ResponseEntity<Long>(orderId, HttpStatus.OK);
+        return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
 }
