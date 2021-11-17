@@ -1,10 +1,8 @@
 package com.ccs.pluto.controller;
 
-import com.ccs.pluto.models.dto.ItemFormDto;
-import com.ccs.pluto.models.dto.ItemSearchDto;
-import com.ccs.pluto.models.dto.MainItemDto;
-import com.ccs.pluto.models.dto.OrderHistDto;
+import com.ccs.pluto.models.dto.*;
 import com.ccs.pluto.models.entity.Item;
+import com.ccs.pluto.service.CartService;
 import com.ccs.pluto.service.ItemService;
 import com.ccs.pluto.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +24,7 @@ public class MainController {
 
     private final ItemService itemService;
     private final OrderService orderService;
+    private final CartService cartService;
 
     //메인 페이지
     @GetMapping("/")
@@ -95,5 +95,13 @@ public class MainController {
         model.addAttribute("maxPage", 5);
 
         return "order/orderHist";
+    }
+
+    //주문목록 페이지
+    @GetMapping("/cart")
+    public String orderHist(Principal principal, Model model){
+        List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
+        model.addAttribute("cartItems", cartDetailList);
+        return "cart/cartList";
     }
 }

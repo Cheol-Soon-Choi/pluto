@@ -7,9 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -44,6 +42,33 @@ public class CartApiController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+
+        return new ResponseEntity<>(cartItemId, HttpStatus.OK);
+    }
+
+    //장바구니 수량 업데이트
+    @PatchMapping("/cartItem/{cartItemId}")
+    public ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal){
+
+        if(count <= 0){
+            return new ResponseEntity<>("최소 1개 이상 담아주세요", HttpStatus.BAD_REQUEST);
+        } else if(!cartService.validateCartItem(cartItemId, principal.getName())){
+            return new ResponseEntity<>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
+        }
+
+        cartService.updateCartItemCount(cartItemId, count);
+        return new ResponseEntity<>(cartItemId, HttpStatus.OK);
+    }
+
+    //장바구니 삭제
+    @DeleteMapping(value = "/cartItem/{cartItemId}")
+    public ResponseEntity deleteCartItem(@PathVariable("cartItemId") Long cartItemId, Principal principal){
+
+        if(!cartService.validateCartItem(cartItemId, principal.getName())){
+            return new ResponseEntity<>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
+        }
+
+        cartService.deleteCartItem(cartItemId);
 
         return new ResponseEntity<>(cartItemId, HttpStatus.OK);
     }
