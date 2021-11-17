@@ -59,9 +59,9 @@ function updateCartItemCount(cartItemId, count) {
         error: function (jqXHR, status, error) {
             if (jqXHR.status == '401') {
                 alert('로그인 후 이용해주세요');
-                location.href = '/members/login';
+                location.href = '/login';
             } else {
-                alert(jqXHR.responseJSON.message);
+                alert(jqXHR.responseText);
             }
         }
     });
@@ -91,7 +91,7 @@ function deleteCartItem(obj) {
                 alert('로그인 후 이용해주세요');
                 location.href = '/login';
             } else {
-                alert(jqXHR.responseJSON.message);
+                alert(jqXHR.responseText);
             }
         }
     });
@@ -123,24 +123,22 @@ function orders() {
         contentType: "application/json",
         data: param,
         beforeSend: function (xhr) {
-            /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
             xhr.setRequestHeader(header, token);
         },
         dataType: "json",
         cache: false,
         success: function (result, status) {
             alert("주문이 완료 되었습니다.");
-            location.href = '/orders';
+            location.href = '/';
         },
         error: function (jqXHR, status, error) {
 
             if (jqXHR.status == '401') {
                 alert('로그인 후 이용해주세요');
-                location.href = '/members/login';
+                location.href = '/login';
             } else {
-                alert(jqXHR.responseJSON.message);
+                alert(jqXHR.responseJSON.message)
             }
-
         }
     });
 }

@@ -40,7 +40,6 @@ public class OrderApiController {
 
         String email = principal.getName();
         Long orderId = orderService.order(orderDto, email);
-        System.out.println(email);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
 

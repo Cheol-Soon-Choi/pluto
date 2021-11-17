@@ -20,7 +20,7 @@ public class ExceptionController {
     @ExceptionHandler(OutOfStockException.class)
     protected ResponseEntity<ErrorResponse> handleOutOfStockException(OutOfStockException e) {
 
-        final ErrorResponse response = ErrorResponse.of(ErrorCode.EMPTY_STOCK);
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.EMPTY_STOCK, e.itemName, e.stockNumber);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

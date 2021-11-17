@@ -16,13 +16,13 @@ public class ErrorResponse {
     private List<FieldError> errors;
     private String code;
 
-    private ErrorResponse(final ErrorCode code){
-        this.message = code.getMessage();
+    private ErrorResponse(final ErrorCode code, String itemName, int stockNumber) {
+        this.message = itemName + " " + code.getMessage() + ", 잔여 수량: " + stockNumber + " 개";
         this.code = code.getCode();
     }
 
-    public static ErrorResponse of(final ErrorCode code) {
-        return new ErrorResponse(code);
+    public static ErrorResponse of(final ErrorCode code, String itemName, int stockNumber) {
+        return new ErrorResponse(code, itemName, stockNumber);
     }
 
     private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {

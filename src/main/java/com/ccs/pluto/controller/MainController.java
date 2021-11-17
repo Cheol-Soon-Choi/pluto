@@ -97,9 +97,9 @@ public class MainController {
         return "order/orderHist";
     }
 
-    //주문목록 페이지
+    //장바구니 목록 페이지
     @GetMapping("/cart")
-    public String orderHist(Principal principal, Model model){
+    public String cartList(Principal principal, Model model){
         List<CartDetailDto> cartDetailList = cartService.getCartList(principal.getName());
         model.addAttribute("cartItems", cartDetailList);
         return "cart/cartList";

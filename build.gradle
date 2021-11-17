@@ -48,6 +48,9 @@ dependencies {
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 
     implementation 'org.modelmapper:modelmapper:2.4.4'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
 
 test {
