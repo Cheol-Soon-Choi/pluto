@@ -1,6 +1,7 @@
 package com.ccs.pluto.service;
 
 import com.ccs.pluto.models.constant.ItemSellStatus;
+import com.ccs.pluto.models.constant.OrderStatus;
 import com.ccs.pluto.models.dto.OrderDto;
 import com.ccs.pluto.models.entity.*;
 import org.junit.jupiter.api.DisplayName;
@@ -78,5 +79,27 @@ class OrderServiceTest {
         int totalPrice = orderDto.getCount() * item.getPrice();
         assertThat(totalPrice).isEqualTo(order.getTotalPrice());
 
+    }
+
+    @Test
+    @DisplayName("주문 취소 테스트")
+    public void cancelOrder() {
+        //given
+        Item item = createItem();
+        Member member = createMember();
+
+        OrderDto orderDto = new OrderDto();
+        orderDto.setCount(10);
+        orderDto.setItemId(item.getId());
+
+        //when
+        Long orderId = orderService.order(orderDto, member.getEmail());
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(EntityNotFoundException::new);
+        orderService.cancelOrder(orderId);
+
+        //then
+        assertThat(OrderStatus.CANCEL).isEqualTo(order.getOrderStatus());
+        assertThat(11).isEqualTo(item.getStockNumber());
     }
 }
