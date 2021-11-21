@@ -8,9 +8,9 @@ group = 'com.ccs'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-jar {
+tasks.jar {
     enabled = true
-    archiveClassifier = ''
+    archiveClassifier.set("")
 }
 
 configurations {
