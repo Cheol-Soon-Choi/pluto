@@ -20,16 +20,20 @@ public class S3Service {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    public String upload(MultipartFile file) throws IOException {
-        String fileName = file.getOriginalFilename();
+    public String upload(String savedFileName, MultipartFile file) throws IOException {
+
+        //메타 데이터
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(file.getSize());
         objectMetadata.setContentType(file.getContentType());
 
-        amazonS3.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), objectMetadata)
+        amazonS3.putObject(new PutObjectRequest(bucket, savedFileName, file.getInputStream(), objectMetadata)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
-        return amazonS3.getUrl(bucket, fileName).toString(); //URL
+        return amazonS3.getUrl(bucket, savedFileName).toString(); //URL
     }
 
+    public void delete(String savedFileName){
+        amazonS3.deleteObject(bucket, savedFileName);
+    }
 
 }
