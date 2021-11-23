@@ -4,10 +4,8 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layouts/layout}">
 
-<th:block layout:fragment="css">
+<head>
     <link th:href="@{/css/item.css}" rel="stylesheet" type="text/css">
-</th:block>
-<th:block layout:fragment="script">
     <script th:inline="javascript">
         $(document).ready(function () {
             var errorMessage = [[${errorMessage}]];
@@ -18,7 +16,7 @@
         });
     </script>
     <script th:src="@{/js/item.js}"></script>
-</th:block>
+</head>
 
 <div layout:fragment="content">
 

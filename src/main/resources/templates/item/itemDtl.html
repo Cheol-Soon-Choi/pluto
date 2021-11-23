@@ -6,15 +6,9 @@
 <head>
     <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
-</head>
-
-<th:block layout:fragment="script">
     <script th:src="@{/js/itemDtl.js}"></script>
-</th:block>
-
-<th:block layout:fragment="css">
     <link th:href="@{/css/itemDtl.css}" rel="stylesheet" type="text/css">
-</th:block>
+</head>
 
 <div layout:fragment="content" style="margin-left:25%;margin-right:25%">
 

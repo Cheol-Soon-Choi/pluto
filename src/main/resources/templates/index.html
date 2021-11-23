@@ -5,10 +5,10 @@
         layout:decorate="~{layouts/layout}"
 >
 
-<th:block layout:fragment="script">
-</th:block>
-<th:block layout:fragment="css">
-</th:block>
+<head>
+    <script th:src="@{#}"></script>
+    <link th:href="@{#}" rel="stylesheet" type="text/css">
+</head>
 
 <div layout:fragment="content" class="warp">
     <div class="best_items" style="border: 1px solid red">

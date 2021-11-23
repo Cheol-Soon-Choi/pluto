@@ -4,12 +4,10 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorate="~{layouts/layout}">
 
-<th:block layout:fragment="css">
+<head>
     <link th:href="@{/css/member.css}" rel="stylesheet" type="text/css">
-</th:block>
-<th:block layout:fragment="script">
     <script th:src="@{/js/member.js}"></script>
-</th:block>
+</head>
 
 <div layout:fragment="content">
     <form action="/login" role="form" method="post">
