@@ -64,23 +64,23 @@
         <div class="searchQuery">
             <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
             <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
-                <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'" style="text-align: center"></p>
+                <p class="h3 font-weight-bold" th:text="${itemSearchDto.searchQuery} + '검색 결과'"
+                   style="text-align: center"></p>
             </div>
         </div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 8px">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <th:block th:each="item, status: ${items.getContent()}">
                     <div class="col">
                         <div class="card shadow-sm">
                             <a th:href="'/items/' +${item.id}" class="main_item">
                                 <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemName}"
-                                     height="400">
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">[[${item.itemName}]]
+                                     height="350">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">[[${item.itemName}]]
                                         <span th:unless="${item.itemSellStatus == T(com.ccs.pluto.models.constant.ItemSellStatus).SELL}"
                                               class="badge btn-danger mgb-15">품절</span></h4>
-                                    <p class="card-text" style="margin-bottom: 8px">[[${item.itemDetail}]]</p>
-                                    <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+                                    <h5 class="card-title">[[${item.price}]]원</h5>
                                 </div>
                             </a>
                         </div>

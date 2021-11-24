@@ -36,6 +36,14 @@ a {
     text-decoration: none
 }
 
+.card-title {
+    color: black;
+}
+
+h5:link {
+    color: black;
+}
+
 .card a:hover {
     color: midnightblue;
     font-weight: bold;

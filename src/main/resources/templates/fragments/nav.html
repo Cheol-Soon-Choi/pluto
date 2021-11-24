@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <nav th:fragment="navFragment">
+    <nav class="bg-light" th:fragment="navFragment">
         <div class="container-fluid d-flex flex-wrap">
             <ul class="nav me-auto">
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/items" class="nav-link link-dark px-2" aria-current="page">상품등록</a></li>
