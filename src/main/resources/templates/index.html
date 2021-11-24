@@ -11,12 +11,64 @@
 </head>
 
 <div layout:fragment="content" class="warp">
-    <div class="best_items" style="border: 1px solid red">
-        Best Product Top 5
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="https://t1.daumcdn.net/tistoryfile/fs10/27_tistory_2009_02_10_17_17_499138004416b??original"
+                     class="d-block w-100" alt="">
+
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h2>There is no gains without pains</h2>
+                        <p>Benjamin Franklin</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://www.wallpaperup.com/uploads/wallpapers/2014/01/13/225753/b970cca19acc86e69aab439536de4935-700.jpg"
+                     class="d-block w-100" alt="">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h2>Imagination rules the world</h2>
+                        <p>Napolen Bonaparte</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://images8.alphacoders.com/356/thumb-1920-356619.jpg"
+                     class="d-block w-100" alt="">
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h2>Dream as if you'll live forever. Live as if you'll die today</h2>
+                        <p>James Dean</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
-    <div class="items" style="border: 1px solid red">
-        New Arrival
+    <div class="new_items" style="border: 1px solid red">
+        <div style="text-align: center">New Arrival</div>
+        <div>
+            zz
+        </div>
     </div>
 
     <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
@@ -48,7 +100,7 @@
             <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
                 <a th:href="@{'/' + '?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number-1}}"
                    aria-label='Previous' class="page-link">
-                    <span aria-hidden='true'>Previous</span>
+                    <span aria-hidden='true'>&laquo;</span>
                 </a>
             </li>
             <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
@@ -59,7 +111,7 @@
             <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
                 <a th:href="@{'/' +'?searchQuery=' + ${itemSearchDto.searchQuery} + '&page=' + ${items.number+1}}"
                    aria-label='Next' class="page-link">
-                    <span aria-hidden='true'>Next</span>
+                    <span aria-hidden='true'>&raquo;</span>
                 </a>
             </li>
         </ul>
