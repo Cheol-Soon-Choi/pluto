@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<header class="bg-light" th:fragment="headerFragment">
+<header class="bg-light pb-2" th:fragment="headerFragment">
     <div class="container-fluid d-flex flex-wrap justify-content-center">
-        <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-            <span class="fs-2">Pluto</span>
-        </a>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" th:action="@{/}" method="get">
-            <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search"
-                   aria-label="Search">
-        </form>
+
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <span class="fs-2">Pluto</span>
+            </a>
+
+            <form class="col-12 col-lg-auto mb-lg-0" th:action="@{/}" method="get">
+                <div class="input-group">
+                    <input type="search" placeholder="Searching here!" aria-describedby="button-addon5" class="form-control mr-sm-2" name="searchQuery">
+                    <div class="input-group-append">
+                        <button id="button-addon5" type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+
     </div>
 </header>
 </html>

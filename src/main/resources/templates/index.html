@@ -10,7 +10,7 @@
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
 </head>
 
-<div layout:fragment="content" class="warp">
+<div layout:fragment="content">
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -60,7 +60,7 @@
         </button>
     </div>
 
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
         <div class="searchQuery">
             <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
             <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
