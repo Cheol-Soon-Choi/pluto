@@ -8,7 +8,6 @@
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/items" class="nav-link link-dark px-2" aria-current="page">상품등록</a></li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"><a href="/admin/itemMng" class="nav-link link-dark px-2">상품관리</a></li>
                 <li class="nav-item" sec:authorize="permitAll()"><a href="/" class="nav-link link-dark px-2">메인</a></li>
-                <li class="nav-item" sec:authorize="permitAll()"><a href="/items" class="nav-link link-dark px-2">제품</a></li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/cart" class="nav-link link-dark px-2">장바구니</a></li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"><a href="/orders" class="nav-link link-dark px-2">주문내역</a></li>
             </ul>
