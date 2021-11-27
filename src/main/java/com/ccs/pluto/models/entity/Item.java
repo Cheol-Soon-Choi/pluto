@@ -62,6 +62,11 @@ public class Item extends BaseEntity {
     //주문시 재고 감소
     public void removeStock(int stockNumber) {
         int restStock = this.stockNumber - stockNumber;
+
+        if (restStock == 0) {
+            this.itemSellStatus = ItemSellStatus.SOLD_OUT;
+        }
+
         if (restStock < 0) {
             throw new OutOfStockException(this.itemName, this.stockNumber);
         }
@@ -70,6 +75,9 @@ public class Item extends BaseEntity {
 
     //주문취소시 재고 증가
     public void addStock(int stockNumber) {
+        if (this.stockNumber == 0) {
+            this.itemSellStatus = ItemSellStatus.SELL;
+        }
         this.stockNumber += stockNumber;
     }
 }
