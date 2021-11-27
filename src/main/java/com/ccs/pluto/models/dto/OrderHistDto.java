@@ -21,14 +21,18 @@ public class OrderHistDto {
 
     //주문 상태
     private OrderStatus orderStatus;
-    
+
     //주문 리스트
     private List<OrderItemDto> orderItemDtoList = new ArrayList<>();
+
+    //주문 총 금액
+    private int totalPrice;
 
     public OrderHistDto(Order order) {
         this.orderId = order.getId();
         this.orderDate = order.getOrderDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         this.orderStatus = order.getOrderStatus();
+        this.totalPrice = order.getTotalPrice();
     }
 
     //주문 상품리스트

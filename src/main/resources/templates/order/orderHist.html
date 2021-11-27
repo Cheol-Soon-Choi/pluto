@@ -45,23 +45,26 @@
                         </div>
                     </div>
                     <hr class="my-1">
-                    <h4 class="text-center">총 주문 금액 : <span id="orderTotalPrice" class="text-danger">0원</span></h4>
+                    <th:block th:if="${order.orderStatus == T(com.ccs.pluto.models.constant.OrderStatus).ORDER}">
+                        <h4 class="text-center">총 주문 금액 : <span class="text-danger" th:text="${order.totalPrice}+'원'"></span></h4>
+                    </th:block>
+                    <th:block
+                            th:unless="${order.orderStatus == T(com.ccs.pluto.models.constant.OrderStatus).ORDER}">
+                        <h4 class="text-center" style="text-decoration : line-through">총 주문 금액 : <span class="text-danger" th:text="${order.totalPrice}+'원'"></span></h4>
+                    </th:block>
                 </div>
             </div>
             <div th:with="start=${(orders.number/maxPage)*maxPage + 1}, end=(${(orders.totalPages == 0) ? 1 : (start + (maxPage - 1) < orders.totalPages ? start + (maxPage - 1) : orders.totalPages)})">
                 <ul class="pagination justify-content-center">
-
                     <li class="page-item" th:classappend="${orders.number eq 0}?'disabled':''">
                         <a th:href="@{'/orders/' + ${orders.number-1}}" aria-label='Previous' class="page-link">
                             <span aria-hidden='true'>Previous</span>
                         </a>
                     </li>
-
                     <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
                         th:classappend="${orders.number eq page-1}?'active':''">
                         <a th:href="@{'/orders/' + ${page-1}}" th:inline="text" class="page-link">[[${page}]]</a>
                     </li>
-
                     <li class="page-item" th:classappend="${orders.number+1 ge orders.totalPages}?'disabled':''">
                         <a th:href="@{'/orders/' + ${orders.number+1}}" aria-label='Next' class="page-link">
                             <span aria-hidden='true'>Next</span>
