@@ -3,7 +3,7 @@
 REPOSITORY=/home/ec2-user/app/step3
 PROJECT_NAME=pluto
 
-echo "> Build 파일 복사"
+echo "> Build 파일 복사 "
 
 cp $REPOSITORY/zip/build/libs/*.jar $REPOSITORY/
 
