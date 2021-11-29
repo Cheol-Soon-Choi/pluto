@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: / #codeeploy에서 전달해준 파일 중 destination으로 이동시킬 대상을 지정
-    destination: /home/ec2-user/app/step2/zip/
+    destination: /home/ec2-user/app/step3/zip/
     overwrite: yes
 
 permissions:
@@ -13,6 +13,6 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: deploy.sh
+    - location: scripts/deploy.sh
       timeout: 60
       runas: ec2-user
