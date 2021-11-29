@@ -1,5 +1,6 @@
 package com.ccs.pluto.service;
 
+import com.ccs.pluto.exception.DuplicateEmailException;
 import com.ccs.pluto.models.dto.MemberFormDto;
 import com.ccs.pluto.models.entity.Member;
 import com.ccs.pluto.models.entity.MemberRepository;
@@ -28,7 +29,7 @@ public class MemberService implements UserDetailsService {
     private void validateDuplicateMember(MemberFormDto memberFormDto, PasswordEncoder passwordEncoder) {
         Member findMember = memberRepository.findByEmail(memberFormDto.toEntity(passwordEncoder).getEmail());
         if (findMember != null) {
-            throw new IllegalStateException("이미 가입된 회원입니다.");
+            throw new DuplicateEmailException(memberFormDto.getEmail());
         }
     }
 

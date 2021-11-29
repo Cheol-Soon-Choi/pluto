@@ -23,4 +23,11 @@ public class ExceptionController {
         final ErrorResponse response = ErrorResponse.of(ErrorCode.EMPTY_STOCK, e.itemName, e.stockNumber);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(DuplicateEmailException.class)
+    protected ResponseEntity<ErrorResponse> handleDuplicateEmailException(DuplicateEmailException e) {
+
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.DUPLICATE_EMAIL, e.email);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 }

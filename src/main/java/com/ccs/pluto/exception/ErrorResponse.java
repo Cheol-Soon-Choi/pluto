@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.BindingResult;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,10 @@ public class ErrorResponse {
         return new ErrorResponse(code, FieldError.of(bindingResult));
     }
 
+    public static ErrorResponse of(final ErrorCode code, String email) {
+        return new ErrorResponse(code, FieldError.of2(email));
+    }
+
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class FieldError {
@@ -57,6 +62,11 @@ public class ErrorResponse {
                             error.getDefaultMessage()))
                     .collect(Collectors.toList());
         }
-    }
 
+        private static List<FieldError> of2(String email) {
+            List<FieldError> list = new ArrayList<>();
+            list.add(new FieldError("email", email, "이미 사용중인 이메일입니다"));
+            return list;
+        }
+    }
 }
