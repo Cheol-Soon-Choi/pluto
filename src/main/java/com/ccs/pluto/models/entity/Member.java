@@ -38,6 +38,6 @@ public class Member extends BaseEntity{
         this.email = email;
         this.password = password;
         this.address = address;
-        this.role = Role.ADMIN;
+        this.role = Role.USER;
     }
 }

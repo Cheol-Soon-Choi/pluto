@@ -1,10 +1,12 @@
 package com.ccs.pluto.service;
 
+import com.ccs.pluto.exception.DuplicateEmailException;
 import com.ccs.pluto.models.constant.Role;
 import com.ccs.pluto.models.dto.MemberFormDto;
 import com.ccs.pluto.models.entity.Member;
 import com.ccs.pluto.models.entity.MemberRepository;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -93,14 +95,11 @@ class MemberServiceTest {
                 .build();
 
         //when
-        try {
-            memberService.saveMember(memberFormDto1, passwordEncoder);
-            memberService.saveMember(memberFormDto2, passwordEncoder);
-        }
+        memberService.saveMember(memberFormDto1, passwordEncoder);
 
         //then
-        catch (IllegalStateException e) {
-            assertThat(e.getMessage()).isEqualTo("이미 가입된 회원입니다.");
-        }
+        Assertions.assertThrows(DuplicateEmailException.class, () -> {
+            memberService.saveMember(memberFormDto2, passwordEncoder);
+        });
     }
 }
