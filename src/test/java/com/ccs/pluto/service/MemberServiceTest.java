@@ -69,7 +69,7 @@ class MemberServiceTest {
         assertThat(member.getEmail()).isEqualTo(email);
         assertThat(passwordEncoder.matches(password, member.getPassword())).isTrue();
         assertThat(member.getAddress()).isEqualTo(address);
-        assertThat(member.getRole()).isEqualTo(Role.ADMIN);
+        assertThat(member.getRole()).isEqualTo(Role.USER);
     }
 
     @Test
