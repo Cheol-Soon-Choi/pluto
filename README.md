@@ -1,6 +1,6 @@
 ## 0. 요약
 - https://www.ccsoon.shop
-- [쇼핑몰 세부설명(Notion)으로 이동]()
+- [쇼핑몰 세부설명(Notion)으로 이동](https://diagnostic-octopus-3df.notion.site/Spring-REST-API-3720e320689547deae0c766253d0dcc6)
 
 ## 1. 기본 사항         
 - Spring Boot 및 REST API를 통한 쇼핑몰 웹 서비스 구현
@@ -46,12 +46,11 @@
     - 자동 배포
 
 + Jenkins
-  + 자동 빌드
-  + Travis CI 무료 기한 만료에 따라 Jenkins로 변경   
+  + 자동 빌드 
 
 ## 4. 개발 환경 및 사용 기술
 - JAVA 11
 - Spring boot 2.5.5 (Gradle)
 - HTML/CSS, JavaScript, Bootstrap, Thymeleaf
 - AWS(EC2, S3, RDS, CodeDeploy)
-- Intellij ULTIMATE
+- Intellij ULTIMATE, Jenkins
