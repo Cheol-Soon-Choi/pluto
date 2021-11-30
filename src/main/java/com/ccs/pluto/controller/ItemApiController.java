@@ -26,12 +26,12 @@ public class ItemApiController {
         mav.setViewName("redirect:/");
 
         if (bindingResult.hasErrors()) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             return mav;
         }
 
         if (itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             mav.addObject("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
             return mav;
         }
@@ -39,7 +39,7 @@ public class ItemApiController {
         try {
             itemService.saveItem(itemFormDto, itemImgFileList);
         } catch (Exception e) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             mav.addObject("errorMessage", "상품 등록 중 에러가 발생하였습니다.");
             return mav;
         }
@@ -50,7 +50,7 @@ public class ItemApiController {
     @GetMapping("/admin/items/{itemId}")
     public ModelAndView getItemDtl(@PathVariable("itemId") Long itemId) {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("/item/itemForm");
+        mav.setViewName("item/itemForm");
 
         try {
             ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
@@ -71,12 +71,12 @@ public class ItemApiController {
         mav.setViewName("redirect:/");
 
         if (bindingResult.hasErrors()) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             return mav;
         }
 
         if (itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             mav.addObject("errorMessage", "첫번째 상품 이미지는 필수 입력 값 입니다.");
             return mav;
         }
@@ -84,7 +84,7 @@ public class ItemApiController {
         try {
             itemService.updateItem(itemFormDto, itemImgFileList);
         } catch (Exception e) {
-            mav.setViewName("/item/itemForm");
+            mav.setViewName("item/itemForm");
             mav.addObject("errorMessage", "상품 수정 중 에러가 발생하였습니다.");
             return mav;
         }
@@ -100,7 +100,7 @@ public class ItemApiController {
         ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
 
         mav.addObject("item", itemFormDto);
-        mav.setViewName("/item/itemDtl");
+        mav.setViewName("item/itemDtl");
 
         return mav;
     }
