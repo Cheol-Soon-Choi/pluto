@@ -46,12 +46,11 @@
     - 자동 배포
 
 + Jenkins
-  + 자동 빌드
-  + Travis CI 무료 기한 만료에 따라 Jenkins로 변경   
+  + 자동 빌드 
 
 ## 4. 개발 환경 및 사용 기술
 - JAVA 11
 - Spring boot 2.5.5 (Gradle)
 - HTML/CSS, JavaScript, Bootstrap, Thymeleaf
 - AWS(EC2, S3, RDS, CodeDeploy)
-- Intellij ULTIMATE
+- Intellij ULTIMATE, 
