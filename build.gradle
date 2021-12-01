@@ -33,7 +33,7 @@ dependencies {
 
     runtimeOnly group: 'com.h2database', name: 'h2', version: '1.4.199'
     implementation 'mysql:mysql-connector-java:8.0.25'
-    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.springframework.boot:spring-boot-devtools'
