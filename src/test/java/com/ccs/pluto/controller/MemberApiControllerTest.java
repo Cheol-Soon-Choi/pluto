@@ -34,11 +34,13 @@ class MemberApiControllerTest {
     PasswordEncoder passwordEncoder;
 
     public void createMember(String email, String password) {
-        MemberFormDto memberFormDto = new MemberFormDto();
-        memberFormDto.setEmail(email);
-        memberFormDto.setName("유재석");
-        memberFormDto.setAddress("서울시 강남구 압구정");
-        memberFormDto.setPassword(password);
+        MemberFormDto memberFormDto
+                = MemberFormDto.builder()
+                .name("유재석")
+                .email(email)
+                .address("서울시 강낭구 압구정")
+                .password(password)
+                .build();
         memberService.saveMember(memberFormDto, passwordEncoder);
     }
 

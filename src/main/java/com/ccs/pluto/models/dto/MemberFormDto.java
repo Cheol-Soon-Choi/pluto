@@ -4,7 +4,6 @@ import com.ccs.pluto.models.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -13,7 +12,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Getter
-@Setter
 @NoArgsConstructor
 public class MemberFormDto {
 
@@ -40,7 +38,7 @@ public class MemberFormDto {
                 .build();
     }
 
-    @Builder//테스트용
+    @Builder
     public MemberFormDto(String name, String email, String password, String address) {
         this.name = name;
         this.email = email;
