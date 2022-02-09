@@ -1,5 +1,5 @@
 ## 0. 요약
-- https://www.ccsoon.shop
+- https://www.aespa.shop
 - [쇼핑몰 세부설명(Notion)으로 이동](https://diagnostic-octopus-3df.notion.site/Spring-REST-API-3720e320689547deae0c766253d0dcc6)
 
 ## 1. 기본 사항         
