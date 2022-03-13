@@ -56,7 +56,6 @@ public class CartService {
         List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
 
         try {
-
             Member member = memberRepository.findByEmail(email);
             Cart cart = cartRepository.findByMemberId(member.getId());
             if (cart == null) {
@@ -99,9 +98,9 @@ public class CartService {
                 .orElseThrow(EntityNotFoundException::new);
         cartItemRepository.delete(cartItem);
     }
-    
+
     //장바구니 주문
-    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email){
+    public Long orderCartItem(List<CartOrderDto> cartOrderDtoList, String email) {
         List<OrderDto> orderDtoList = new ArrayList<>();
 
         for (CartOrderDto cartOrderDto : cartOrderDtoList) {

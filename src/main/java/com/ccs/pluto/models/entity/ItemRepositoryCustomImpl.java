@@ -7,22 +7,19 @@ import com.ccs.pluto.models.dto.QMainItemDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@RequiredArgsConstructor
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
-    private JPAQueryFactory queryFactory;
-
-    public ItemRepositoryCustomImpl(EntityManager em) {
-        this.queryFactory = new JPAQueryFactory(em);
-    }
+    private final JPAQueryFactory queryFactory;
 
     //관리자 검색
     //where절에서 사용

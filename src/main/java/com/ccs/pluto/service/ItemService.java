@@ -51,7 +51,7 @@ public class ItemService {
     }
 
     //상품정보 가져오기
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     public ItemFormDto getItemDtl(Long itemId) {
 
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
