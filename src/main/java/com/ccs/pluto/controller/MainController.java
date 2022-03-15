@@ -1,7 +1,6 @@
 package com.ccs.pluto.controller;
 
 import com.ccs.pluto.models.dto.*;
-import com.ccs.pluto.models.entity.Item;
 import com.ccs.pluto.service.CartService;
 import com.ccs.pluto.service.ItemService;
 import com.ccs.pluto.service.OrderService;
@@ -71,7 +70,7 @@ public class MainController {
     public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
 
         Pageable pageable = PageRequest.of(page.orElse(0), 3);
-        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
+        Page<AdminItemDto> items = itemService.getAdminItemPage(itemSearchDto, pageable);
 
         model.addAttribute("items", items);
         model.addAttribute("itemSearchDto", itemSearchDto);

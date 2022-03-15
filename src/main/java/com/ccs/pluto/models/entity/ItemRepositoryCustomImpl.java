@@ -1,9 +1,7 @@
 package com.ccs.pluto.models.entity;
 
 import com.ccs.pluto.models.constant.ItemSellStatus;
-import com.ccs.pluto.models.dto.ItemSearchDto;
-import com.ccs.pluto.models.dto.MainItemDto;
-import com.ccs.pluto.models.dto.QMainItemDto;
+import com.ccs.pluto.models.dto.*;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -60,20 +58,29 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
     }
 
     @Override
-    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+    public Page<AdminItemDto> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        QItem item = QItem.item;
 
-        QueryResults<Item> results = queryFactory
-                .selectFrom(QItem.item)
+        QueryResults<AdminItemDto> results = queryFactory
+                .select(
+                        new QAdminItemDto(
+                                item.id,
+                                item.itemName,
+                                item.itemSellStatus,
+                                item.createdBy,
+                                item.regTime)
+                )
+                .from(item)
                 .where(regDtsAfter(itemSearchDto.getSearchDateType()),
                         searchSellStatusEq(itemSearchDto.getSearchSellStatus()),
                         searchByLike(itemSearchDto.getSearchBy(),
                                 itemSearchDto.getSearchQuery()))
-                .orderBy(QItem.item.id.desc())
+                .orderBy(item.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
 
-        List<Item> content = results.getResults();
+        List<AdminItemDto> content = results.getResults();
         long total = results.getTotal();
         return new PageImpl<>(content, pageable, total);
     }

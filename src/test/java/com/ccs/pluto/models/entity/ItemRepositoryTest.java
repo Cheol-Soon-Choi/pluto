@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,8 +22,8 @@ class ItemRepositoryTest {
     @Autowired
     ItemRepository itemRepository;
 
-    @PersistenceContext
-    EntityManager em;
+    @Autowired
+    JPAQueryFactory queryFactory;
 
     @AfterEach
     public void cleanup() {
@@ -137,7 +135,6 @@ class ItemRepositoryTest {
 
         //when
         //Q클래스를 활용하여 쿼리를 동적으로 생성
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QItem qItem = QItem.item;
         JPAQuery<Item> query = queryFactory.selectFrom(qItem)
                 .where(qItem.itemSellStatus.eq(ItemSellStatus.SOLD_OUT))
