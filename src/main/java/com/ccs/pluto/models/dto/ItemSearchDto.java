@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 public class ItemSearchDto {
 
     //날짜 조건
@@ -20,6 +19,13 @@ public class ItemSearchDto {
     private String searchBy;
 
     //검색 내용
-    private String searchQuery = "";
+    private String searchQuery;
 
+    @Builder
+    public ItemSearchDto(String searchDateType, ItemSellStatus searchSellStatus, String searchBy, String searchQuery) {
+        this.searchDateType = searchDateType;
+        this.searchSellStatus = searchSellStatus;
+        this.searchBy = searchBy;
+        this.searchQuery = searchQuery;
+    }
 }
