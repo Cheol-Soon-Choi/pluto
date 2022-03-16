@@ -1,11 +1,13 @@
 package com.ccs.pluto.models.dto;
 
 import com.ccs.pluto.models.constant.ItemSellStatus;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class ItemSearchDto {
 
     //날짜 조건

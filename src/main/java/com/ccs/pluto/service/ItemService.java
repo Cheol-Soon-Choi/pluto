@@ -81,13 +81,13 @@ public class ItemService {
         return item.getId();
     }
 
-    //관리자 상품 검색
+    //관리자 상품 검색 및 출력
     @Transactional(readOnly = true)
     public Page<AdminItemDto> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 
-    //메인 상품 검색
+    //메인 상품 검색 및 출력
     @Transactional(readOnly = true)
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
