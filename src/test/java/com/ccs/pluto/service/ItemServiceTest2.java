@@ -79,7 +79,6 @@ public class ItemServiceTest2 {
                 .itemSellStatus(ItemSellStatus.SELL)
                 .itemDetail("Nope")
                 .build();
-        item.setId(2L);
 
         ItemFormDto MockItemFormDto = ItemFormDto.of(item);
         MockItemFormDto.setPrice(30);
