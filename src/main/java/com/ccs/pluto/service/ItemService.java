@@ -25,9 +25,9 @@ public class ItemService {
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
 
+    //상품 등록
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
 
-        //상품 등록
         Item item = itemFormDto.createItem();
         itemRepository.save(item);
 
@@ -64,8 +64,8 @@ public class ItemService {
         return itemFormDto;
     }
 
-    //상품 업데이트
-    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+    //상품 수정(업데이트)
+    public void updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
 
         Item item = itemRepository.findById(itemFormDto.getId())
                 .orElseThrow(EntityNotFoundException::new);
@@ -77,8 +77,6 @@ public class ItemService {
             itemImgService.updateItemImg(itemImgIds.get(i),
                     itemImgFileList.get(i));
         }
-
-        return item.getId();
     }
 
     //관리자 상품 검색 및 출력
