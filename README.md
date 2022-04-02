@@ -1,6 +1,10 @@
 ## 0. 요약
-- https://www.aespa.shop
+- ~~https://www.aespa.shop~~
+  - AWS 프리티어(12개월 무료) 만료
 - [쇼핑몰 세부설명(Notion)으로 이동](https://diagnostic-octopus-3df.notion.site/Spring-REST-API-3720e320689547deae0c766253d0dcc6)
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/79562672/161388752-e120a2b7-888a-452f-8f53-c4adacfd5bc2.PNG" width="55%">
+</p>
 
 ## 1. 기본 사항         
 - Spring Boot 및 REST API를 통한 쇼핑몰 웹 서비스 구현
